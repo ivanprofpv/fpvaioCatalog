@@ -1,6 +1,6 @@
 from aiogram import Router
 from aiogram.filters import CommandStart
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from magic_filter import F
 
 import app.keyboards as kb
@@ -18,8 +18,9 @@ async def catalog(message: Message):
     await message.answer('Выберите вариант из каталога', reply_markup=await kb.categories())
 
 @router.callback_query(F.data.startswish('category_'))
-async def category_selected(message: Message):
-    category_id = message.data.split('_')[1]
-    await message.answer(f'Вы выбрали категорию {category_id}')
+async def category_selected(callback: CallbackQuery):
+    category_id = callback.data.split('_')[1]
+    await callback.answer(f'Вы выбрали категорию {category_id}')
+    await callback.answer('Категория выбрана!')
 
 
