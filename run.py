@@ -12,7 +12,7 @@ from app.database.models import async_main
 async def main():
     await async_main()
 
-    bot = Bot(token=os.getenv('BOT_TOKEN'))
+    bot = Bot(token=os.getenv('BOT_TOKEN'), parse_mode='HTML')
     dp = Dispatcher()
     dp.include_router(router)
 
