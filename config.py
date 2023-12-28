@@ -1,1 +1,1 @@
-SQLALCHEMY_URL="sqlite+aiosqlite:///db.sqlite3"
+SQLALCHEMY_URL = "sqlite+aiosqlite:///db.sqlite3"

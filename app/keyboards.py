@@ -14,11 +14,12 @@ async def categories():
     categories = await get_categories()
     for category in categories:
         categories_kb.add(InlineKeyboardButton(text=category.name, callback_data=f'category_{category.id}'))
-    return categories_kb.adjust(2).as_markup(resize_keyboard=True)
+    return categories_kb.adjust(2).as_markup()
+
 
 async def products(category_id):
     products_kb = InlineKeyboardBuilder()
-    products = await get_products()
+    products = await get_products(category_id)
     for product in products:
         products_kb.add(InlineKeyboardButton(text=product.name, callback_data=f'product_{product.id}'))
-    return products_kb.adjust(2).as_markup(resize_keyboard=True)
+    return products_kb.adjust(2).as_markup()

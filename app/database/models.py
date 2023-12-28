@@ -23,7 +23,7 @@ class Category(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column()
 
-    products = relationship('Product', back_populates='category')
+    products = relationship('Product', back_populates='categories')
 
 class Product(Base):
     __tablename__ = 'products'
@@ -34,7 +34,7 @@ class Product(Base):
     price: Mapped[int] = mapped_column()
     category_id: Mapped[int] = mapped_column(ForeignKey('categories.id'))
 
-    category = relationship('Category', back_populates='products')
+    categories = relationship('Category', back_populates='products')
 
 
 # The function creates tables in the database
